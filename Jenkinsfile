@@ -48,8 +48,8 @@ node {
             [
                 sshPublisherDesc(configName: '192.168.99.224',
                 transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:
-                "/opt/jenkins_shell/deploy.sh $harbor_url $harbor_project_name $project_name
-                $tag $port", execTimeout: 120000, flatten: false, makeEmptyDirs: false,
+                "/opt/jenkins_shell/deploy.sh $harbor_url $harbor_project_name $project_name $tag $port",
+                execTimeout: 120000, flatten: false, makeEmptyDirs: false,
                 noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '',
                 remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')],
                 usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)
