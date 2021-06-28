@@ -44,12 +44,16 @@ node {
 
     stage('部署服务器执行脚本'){
         //=====以下为远程调用进行项目部署========
-        sshPublisher(publishers: [sshPublisherDesc(configName: '192.168.99.224',
-        transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:
-        "/opt/jenkins_shell/deploy.sh $harbor_url $harbor_project_name $project_name
-        $tag $port", execTimeout: 120000, flatten: false, makeEmptyDirs: false,
-        noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '',
-        remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')],
-        usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+        sshPublisher(publishers:
+            [
+                sshPublisherDesc(configName: '192.168.99.224',
+                transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:
+                "/opt/jenkins_shell/deploy.sh $harbor_url $harbor_project_name $project_name
+                $tag $port", execTimeout: 120000, flatten: false, makeEmptyDirs: false,
+                noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '',
+                remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')],
+                usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)
+            ]
+        )
     }
 }
