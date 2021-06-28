@@ -39,6 +39,6 @@ docker login -u fanyao -p Fanyao931213 $harbor_url
 docker pull $imageName
 
 # 启动容器
-docker run -di -p $port:$port $imageName
+docker run -di -p $port:80 $imageName
 
 echo "容器启动成功"
