@@ -6,6 +6,8 @@ def git_url = "http://gitcebon.cebon-company.online:8080/fanyao/webtest.git"
 def project_name = "webtest"
 //构建版本的名称
 def tag = "latest"
+//程序的端口
+def port = 10086
 
 //Harbor私服地址
 def harbor_url = "192.168.99.78:85"
