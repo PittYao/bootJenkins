@@ -27,7 +27,7 @@ node {
         //定义镜像名称
         def imageName = "${project_name}:${tag}"
         //编译，构建本地镜像
-        sh "mvn clean package dockerfile:build"
+        sh "mvn clean package -Dmaven.test.skip dockerfile:build"
         //给镜像打标签
         sh "docker tag ${imageName} ${harbor_url}/${harbor_project_name}/${imageName}"//登录Harbor，并上传镜像
 
