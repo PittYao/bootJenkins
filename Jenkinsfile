@@ -2,6 +2,8 @@
 def git_auth = "3c624c30-b117-47c8-9e3e-c9551498e3a5"
 //git地址
 def git_url = "http://gitcebon.cebon-company.online:8080/fanyao/webtest.git"
+//项目名称
+def project_name = "webtest"
 //构建版本的名称
 def tag = "latest"
 
