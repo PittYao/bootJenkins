@@ -7,7 +7,7 @@ def project_name = "webtest"
 //构建版本的名称
 def tag = "latest"
 //程序的端口
-// def port = 10086
+def port = 8083
 
 //Harbor私服地址
 def harbor_url = "192.168.99.78:85"
@@ -27,7 +27,7 @@ node {
         //定义镜像名称
         def imageName = "${project_name}:${tag}"
         //编译，构建本地镜像
-        sh "mvn clean package -Dmaven.test.skip dockerfile:build --build-arg port=${port}"
+        sh "mvn clean package -Dmaven.test.skip dockerfile:build"
         //给镜像打标签
         sh "docker tag ${imageName} ${harbor_url}/${harbor_project_name}/${imageName}"//登录Harbor，并上传镜像
 
