@@ -15,7 +15,6 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <server.port>8083</server.port>
     </properties>
     <dependencies>
         <dependency>
@@ -57,7 +56,6 @@
                     <repository>${project.artifactId}</repository>
                     <buildArgs>
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                        <SERVER_PORT>${server.port}</SERVER_PORT>
                     </buildArgs>
                 </configuration>
             </plugin>
