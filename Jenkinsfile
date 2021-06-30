@@ -20,10 +20,10 @@ node {
     script {
         if ( "${deploy}" == "发布" ) {
             stage('拉取代码') {
-                           checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']],
-                           doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
-                           userRemoteConfigs: [[credentialsId: "${git_auth}", url:"${git_url}"]]])
-                   }
+               checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']],
+               doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
+               userRemoteConfigs: [[credentialsId: "${git_auth}", url:"${git_url}"]]])
+           }
 
            stage('编译，构建镜像') {
                //定义镜像名称
@@ -63,24 +63,23 @@ node {
         }
     }
 
-
-  /*   if ("${deploy}".equals("回滚")){
-        stage('服务器执行回滚脚本'){
-            //=====以下为远程调用进行项目部署========
-            sshPublisher(publishers:
-                [
-                    sshPublisherDesc(configName: '192.168.99.224',
-                    transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:
-                    "/opt/jenkins_shell/back_deploy.sh $harbor_url $harbor_project_name $project_name $tag $port",
-                    execTimeout: 120000, flatten: false, makeEmptyDirs: false,
-                    noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '',
-                    remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')],
-                    usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)
-                ]
-            )
+    script {
+        if ( "${deploy}" == "回滚" ) {
+            stage('服务器执行回滚脚本'){
+                //=====以下为远程调用进行项目部署========
+                sshPublisher(publishers:
+                    [
+                        sshPublisherDesc(configName: '192.168.99.224',
+                        transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:
+                        "/opt/jenkins_shell/back_deploy.sh $harbor_url $harbor_project_name $project_name $tag $port",
+                        execTimeout: 120000, flatten: false, makeEmptyDirs: false,
+                        noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '',
+                        remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')],
+                        usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)
+                    ]
+                )
+            }
         }
-    } */
-
-
+    }
 
 }
