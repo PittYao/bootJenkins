@@ -11,7 +11,8 @@ imageName=$harbor_url/$harbor_project_name/$project_name:$tag
 echo "$imageName"
 
 #查询容器是否存在，存在则删除
-containerId=`docker ps -a | grep -w ${project_name}:${tag} | awk '{print $1}'`
+#containerId=`docker ps -a | grep -w ${project_name}:${tag} | awk '{print $1}'`
+containerId=`docker ps -a | grep -w ${project_name} | awk '{print $1}'`
 if [ "$containerId" != "" ] ; then
   #停掉容器
   docker stop $containerId
