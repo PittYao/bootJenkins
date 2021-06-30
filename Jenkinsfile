@@ -17,7 +17,7 @@ def harbor_project_name = "webtest"
 def harbor_auth = "734a87d9-5119-4c4f-bcb3-27c9a25b2ab1"
 
 node {
-    if ('${deploy}'== '发布'){
+    if ("发布".equals("${deploy}") ){
         stage('拉取代码') {
                 checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']],
                 doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
@@ -61,7 +61,7 @@ node {
         }
     }
 
-    if ('${deploy}'== '回滚'){
+    if ("回滚".equals("${deploy}"){
         stage('服务器执行回滚脚本'){
             //=====以下为远程调用进行项目部署========
             sshPublisher(publishers:
